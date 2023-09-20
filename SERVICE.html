@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services</title>
+    <link rel="stylesheet" href="SERVICE.css">
+    <script
+      src="https://kit.fontawesome.com/8d9c0d6ce7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo1">Ngan kang</a>
+
+      <i class="bx bxs-food-menu" id="menu-icon"></i>
+
+      <nav class="navber">
+        <a href="index.html">HOME</a>
+        <a href="Home.html" >ABOUT</a>
+        <a href="SERVICE.html " class="active">SERVICE</a>
+        <a href="COTACE.html">CONTACE</a>
+      </nav>
+    </header>
+
+      <h1 class="text">Tutoring Services</h1>
+      <ul class="list container">
+        <li class="item active">All</li>
+        <li class="item">Software</li>
+        <li class="item">Web Development</li>
+        <li class="item">App Development</li>
+      </ul>
+      <div class="card-container">
+        <!-- <article class="card">
+          <img class="logo" src="practiceIMG/cpp.png" />
+          <h3 class="title">C++</h3>
+        </article> -->
+      </div>
+      <script>
+        const languages = [
+    {
+      category: ["software", "game"],
+      logo: "page2/CPP.jpg",
+      title: "C++",
+    },
+    {
+      category: ["software", "game"],
+      logo: "page2/C.jpg",
+      title: "C#",
+    },
+    {
+      category: ["web"],
+      logo: "page2/HTML.jpg",
+      title: "CSS",
+    },
+    {
+      category: ["app"],
+      logo: "page2/csharp.jpg",
+      title: "Flutter",
+    },
+    {
+      category: ["web"],
+      logo: "page2/HTML2.jpg",
+      title: "HTML",
+    },
+    {
+      category: ["app", "game", "software"],
+      logo: "page2/Java.jpg",
+      title: "Java",
+    },
+    {
+      category: ["software", "web"],
+      logo: "page2/JavaScript.jpg",
+      title: "JavaScript",
+    },
+    {
+      category: ["app"],
+      logo: "page2/OTSKAL.jpg",
+      title: "Kotlin",
+    },
+    {
+      category: ["app", "web"],
+      logo: "page2/MYSQL.jpg",
+      title: "MySQL",
+    },
+    {
+      category: ["web"],
+      logo: "page2/NODC.jpg",
+      title: "NodeJS",
+    },
+    {
+      category: ["app", "web"],
+      logo: "page2/PHP.jpg",
+      title: "PHP",
+    },
+    {
+      category: ["software", "web"],
+      logo: "page2/Pathon.jpg",
+      title: "Python",
+    },
+    {
+      category: ["app"],
+      logo: "page2/otds.jpg",
+      title: "React Native",
+    },
+    {
+      category: ["app"],
+      logo: "page2/eee.jpg",
+      title: "Swift",
+    },
+    {
+      category: ["game"],
+      logo: "page2/tttt.jpg",
+      title: "Unity 3D",
+    },
+    {
+      category: ["game"],
+      logo: "page2/poi.jpg",
+      title: "Unreal",
+    },
+  ];
+  const cardContainer = document.querySelector(".card-container");
+  const listBtn = document.querySelector(".list");
+  const button = document.querySelectorAll(".item");
+  let value = "all";
+  displayType(languages);
+  button.forEach((btn) => {
+    btn.addEventListener("click", function (click) {
+      const check = click.currentTarget;
+      if (check.classList.contains("active")) {
+        return null;
+      } else {
+        for (let i = 0; i < button.length; i++) {
+          button[i].classList.remove("active");
+        }
+        check.classList.add("active");
+      }
+      const title = check.textContent;
+      const splitTitle = title.split(" ");
+      value = splitTitle[0].toLowerCase();
+      const filterLanguages = languages.filter((each) => {
+        return (
+          each.category[0] == value ||
+          each.category[1] == value ||
+          each.category[2] == value
+        );
+      });
+      if (value == "all") {
+        displayType(languages);
+      } else {
+        displayType(filterLanguages);
+      }
+    });
+  });
+  function displayType(condition) {
+    const display = condition
+      .map(function (item) {
+        return `<article class="card">
+      <img class="logo" src="${item.logo}" />
+      <h3 class="title">${item.title}</h3>
+    </article>`;
+      })
+      .join("");
+    cardContainer.innerHTML = display;
+  }
+  
+      </script>
+  </body>
+  <!--Style css-->
+  <style>
+    @import url('Photo/photo-1681697390349-ce67ad7014e5.avif');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+    body {
+      background-color: var(--text-color);
+    }
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+    }
+
+    .text{
+      text-align: center;
+      font-size: 4rem;
+      margin-top: 10rem;
+      color: var(--second-bg-color);
+    }
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem 9%;
+      background: var(--second-bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .header.sticky {
+      border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+    }
+    .logo1 {
+      font-size: 2.5rem;
+      color: var(--text-color);
+      font-weight: 600;
+      cursor: default;
+    }
+    .navber a {
+      font-size: 1.7rem;
+      color: var(--text-color);
+      margin-left: 4rem;
+      transition: 0.3s;
+    }
+    .navber a:hover,
+    .navber a.active {
+      color: var(--main-color);
+    }
+    
+
+    :root {
+      --bg--color: #1f242d;
+      --second-bg-color: #323946;
+      --text-color: #fff;
+      --main-color: #0ef;
+    }
+  </style>
+
+</html>
